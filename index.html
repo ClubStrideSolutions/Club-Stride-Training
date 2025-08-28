@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Club Stride Youth Training Module - Self-Paced Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --berkeley-blue: #003262;
+    --california-gold: #FDB515;
+    --light-blue: #4A90E2;
+    --dark-blue: #001B3D;
+    --gold-light: #FFD93D;
+    --text-dark: #2C3E50;
+    --text-light: #6C7B7F;
+    --bg-light: #F8FAFB;
+    --white: #FFFFFF;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--berkeley-blue) 0%, var(--light-blue) 100%);
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--white);
+    box-shadow: 0 0 40px rgba(0,0,0,0.15);
+  }
+  
+  header {
+    background: linear-gradient(135deg, var(--berkeley-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(253, 181, 21, 0.1) 0%, transparent 50%), 
+                radial-gradient(circle at 80% 20%, rgba(253, 181, 21, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo {
+    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
+    color: var(--berkeley-blue);
+    padding: 12px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    margin-bottom: 25px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(253, 181, 21, 0.3);
+    border: 2px solid rgba(255,255,255,0.2);
+  }
+  
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    letter-spacing: -1px;
+    background: linear-gradient(45deg, var(--white), var(--california-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .tagline {
+    font-size: 1.3rem;
+    font-weight: 400;
+    opacity: 0.95;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+  }
+  
+  main {
+    padding: 60px 40px;
+    background: var(--bg-light);
+  }
+  
+  .name-input-section {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+  }
+  
+  .name-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    border: 2px solid var(--california-gold);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .name-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(253, 181, 21, 0.05) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  .name-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+  }
+  
+  .name-header h2 {
+    color: var(--berkeley-blue);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .name-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .name-form {
+    position: relative;
+    z-index: 1;
+  }
+  
+  #studentName {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    border: 3px solid var(--california-gold);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    background: #FFFBEB;
+    color: var(--berkeley-blue);
+    transition: all 0.3s ease;
+  }
+  
+  #studentName:focus {
+    outline: none;
+    border-color: var(--berkeley-blue);
+    background: var(--white);
+    box-shadow: 0 0 20px rgba(0, 50, 98, 0.1);
+    transform: scale(1.02);
+  }
+  
+  #studentName::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+  }
+  
+  #startBtn {
+    background: linear-gradient(135deg, var(--berkeley-blue) 0%, var(--light-blue) 100%);
+    color: var(--white);
+    border: none;
+    padding: 15px 40px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(0, 50, 98, 0.3);
+  }
+  
+  #startBtn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 50, 98, 0.4);
+  }
+  
+  #startBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(180deg); }
+  }
+  
+  .progress-text {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 600;
+    color: var(--berkeley-blue);
+  }
+  
+  .intro-section {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    margin-bottom: 50px;
+    border-left: 8px solid var(--california-gold);
+    position: relative;
+  }
+  
+  .intro-section::before {
+    content: '🚀';
+    position: absolute;
+    top: -10px;
+    right: 30px;
+    font-size: 2rem;
+    background: var(--california-gold);
+    padding: 10px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .intro-section h2 {
+    color: var(--berkeley-blue);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .intro-section p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+  
+  .progress-container {
+    margin: 30px 0;
+    text-align: center;
+  }
+  
+  .progress-label {
+    font-weight: 700;
+    color: var(--berkeley-blue);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+  
+  .progress-bar {
+    background: #E2E8F0;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .progress-fill {
+    background: linear-gradient(90deg, var(--california-gold), var(--gold-light));
+    height: 100%;
+    width: 0%;
+    border-radius: 6px;
+    transition: width 0.8s ease;
+    box-shadow: 0 2px 8px rgba(253, 181, 21, 0.4);
+  }
+  
+  .module {
+    background: var(--white);
+    border-radius: 20px;
+    margin: 40px 0;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    position: relative;
+  }
+  
+  .module:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+    border-color: var(--california-gold);
+  }
+  
+  .module-header {
+    background: linear-gradient(135deg, var(--berkeley-blue) 0%, var(--light-blue) 100%);
+    color: var(--white);
+    padding: 30px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .module-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, var(--california-gold), transparent);
+    opacity: 0.1;
+    transform: skew(-20deg);
+  }
+  
+  .module-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .module h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    letter-spacing: 0.5px;
+  }
+  
+  .module-number {
+    background: linear-gradient(135deg, var(--california-gold), var(--gold-light));
+    color: var(--berkeley-blue);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 900;
+    box-shadow: 0 4px 15px rgba(253, 181, 21, 0.4);
+    border: 3px solid rgba(255,255,255,0.2);
+  }
+  
+  .duration {
+    background: rgba(253, 181, 21, 0.2);
+    color: var(--california-gold);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid var(--california-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .module-content {
+    padding: 40px;
+  }
+  
+  .module-content p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+  }
+  
+  .resource-section {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+    border-left: 6px solid var(--berkeley-blue);
+    position: relative;
+  }
+  
+  .resource-section::before {
+    content: '📚';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .resource-title {
+    font-weight: 800;
+    color: var(--berkeley-blue);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .resource-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .resource-section li {
+    margin: 10px 0;
+  }
+  
+  .resource-section a {
+    color: var(--berkeley-blue);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 0;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .resource-section a:hover {
+    color: var(--california-gold);
+    border-bottom-color: var(--california-gold);
+    transform: translateX(5px);
+  }
+  
+  .submission-required {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FBBF24 100%);
+    border: 3px solid var(--california-gold);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(253, 181, 21, 0.2);
+  }
+  
+  .submission-required::before {
+    content: '⚠️';
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: var(--california-gold);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(253, 181, 21, 0.4);
+  }
+  
+  .submission-header {
+    font-weight: 800;
+    color: var(--berkeley-blue);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .submission-details {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-left: 4px solid var(--berkeley-blue);
+  }
+  
+  .submission-details p {
+    margin: 10px 0;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+  
+  .submission-details a {
+    color: var(--berkeley-blue);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--california-gold);
+    padding: 2px 4px;
+  }
+  
+  .submission-details a:hover {
+    background: var(--california-gold);
+    color: var(--white);
+    border-radius: 4px;
+  }
+  
+  details {
+    margin-top: 30px;
+    border: 2px solid #E2E8F0;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  
+  summary {
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
+    color: var(--berkeley-blue);
+    padding: 20px 25px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+  }
+  
+  summary:hover {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--california-gold) 100%);
+    transform: scale(1.02);
+  }
+  
+  details[open] summary {
+    border-bottom: 2px solid var(--berkeley-blue);
+  }
+  
+  details .content {
+    padding: 30px 25px;
+    background: var(--white);
+  }
+  
+  details ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  details li {
+    margin: 15px 0;
+    padding: 15px 20px;
+    background: #F8FAFB;
+    border-radius: 10px;
+    border-left: 4px solid var(--berkeley-blue);
+    font-weight: 500;
+    line-height: 1.6;
+    position: relative;
+  }
+  
+  details li::before {
+    content: '✓';
+    position: absolute;
+    left: -2px;
+    top: 15px;
+    background: var(--california-gold);
+    color: var(--berkeley-blue);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 0.9rem;
+  }
+  
+  .completed-badge {
+    background: linear-gradient(135deg, var(--california-gold), var(--gold-light));
+    color: var(--berkeley-blue);
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-left: 15px;
+    animation: bounceIn 0.5s ease-out;
+  }
+  
+  .module.completed {
+    border-color: var(--california-gold);
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  }
+  
+  .module.completed:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(253, 181, 21, 0.2);
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .final-module {
+    border: 3px solid var(--california-gold);
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  }
+  
+  .final-module .module-header {
+    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
+    color: var(--berkeley-blue);
+  }
+  
+  .final-module .module-number {
+    background: var(--berkeley-blue);
+    color: var(--california-gold);
+  }
+  
+  .final-module .duration {
+    background: rgba(0, 50, 98, 0.1);
+    color: var(--berkeley-blue);
+    border-color: var(--berkeley-blue);
+  }
+  
+  .integration-module {
+    border: 3px solid var(--light-blue);
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F7FA 100%);
+    position: relative;
+  }
+  
+  .integration-module::before {
+    content: '⚡ INTEGRATION CHALLENGE';
+    position: absolute;
+    top: -15px;
+    left: 30px;
+    background: linear-gradient(135deg, var(--light-blue), #4FC3F7);
+    color: var(--white);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+  }
+  
+  .integration-module .module-header {
+    background: linear-gradient(135deg, var(--light-blue) 0%, #42A5F5 100%);
+    color: var(--white);
+  }
+  
+  .integration-module .module-number {
+    background: linear-gradient(135deg, var(--california-gold), var(--gold-light));
+    color: var(--berkeley-blue);
+    font-size: 1.5rem;
+  }
+  
+  .integration-module .duration {
+    background: rgba(74, 144, 226, 0.2);
+    color: var(--light-blue);
+    border-color: var(--light-blue);
+  }
+  
+  .completion-badge {
+    text-align: center;
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, var(--berkeley-blue) 0%, var(--light-blue) 100%);
+    color: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 50, 98, 0.2);
+  }
+  
+  .completion-badge h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .completion-badge p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  .certificate-section {
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .certificate-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    border: 3px solid var(--california-gold);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .certificate-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(253, 181, 21, 0.08) 0%, transparent 70%);
+    animation: certificateGlow 4s ease-in-out infinite;
+  }
+  
+  .certificate-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+  }
+  
+  .certificate-header h2 {
+    color: var(--berkeley-blue);
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .certificate-header p {
+    color: var(--text-light);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .certificate-preview {
+    position: relative;
+    z-index: 1;
+    margin-top: 30px;
+  }
+  
+  #certificateCanvas {
+    border: 3px solid var(--berkeley-blue);
+    border-radius: 15px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    margin-bottom: 25px;
+  }
+  
+  .submission-reminder {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FBBF24 100%);
+    border: 2px solid var(--california-gold);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    text-align: left;
+  }
+  
+  .submission-reminder p {
+    color: var(--berkeley-blue);
+    font-weight: 600;
+    margin: 10px 0;
+  }
+  
+  .submission-reminder ul {
+    color: var(--text-dark);
+    margin: 10px 0 10px 20px;
+  }
+  
+  .submission-reminder li {
+    margin: 8px 0;
+    font-weight: 500;
+  }
+  
+  .submission-reminder a {
+    color: var(--berkeley-blue);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid var(--california-gold);
+    padding: 2px 4px;
+  }
+  
+  .submission-reminder a:hover {
+    background: var(--california-gold);
+    color: var(--white);
+    border-radius: 4px;
+  }
+  
+  .certificate-download-section {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .cert-download-btn {
+    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
+    color: var(--berkeley-blue);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(253, 181, 21, 0.3);
+  }
+  
+  .cert-download-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(253, 181, 21, 0.4);
+  }
+  
+  .success-message {
+    display: none;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    color: #155724;
+    padding: 15px 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    font-weight: 600;
+    border: 2px solid #b8dacc;
+  }
+  
+  .success-message.show {
+    display: block;
+    animation: slideDown 0.5s ease-out;
+  }
+  
+  @keyframes certificateGlow {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.05) rotate(180deg); opacity: 0.8; }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      padding: 40px 20px;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    main {
+      padding: 40px 20px;
+    }
+    
+    .module-title {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .module-content {
+      padding: 30px 25px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .tagline {
+      font-size: 1.1rem;
+    }
+    
+    .intro-section, .module-content {
+      padding: 25px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header-content">
+      <div class="logo">Club Stride Youth</div>
+      <h1>Training Module</h1>
+      <p class="tagline">Master Essential Skills Through Self-Paced Learning • Health Advocacy • Content Creation • Event Planning • Behavior Change</p>
+    </div>
+  </header>
+  
+  <main>
+    <!-- Name Input Section -->
+    <section class="name-input-section" id="nameInputSection">
+      <div class="name-card">
+        <div class="name-header">
+          <h2>🎯 Start Your Training Journey</h2>
+          <p>Enter your name to begin! Simply explore each module and your progress will be tracked automatically. No complicated tasks - just learn and earn your certificate!</p>
+        </div>
+        <div class="name-form">
+          <input type="text" id="studentName" placeholder="Enter your full name" maxlength="50">
+          <button onclick="startTraining()" id="startBtn">Begin Training →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progress Section (initially hidden) -->
+    <section class="intro-section" id="progressSection" style="display: none;">
+      <h2>Welcome to Your Journey, <span id="welcomeName"></span>! 🚀</h2>
+      <p>Complete the training modules below and submit the required certificates to earn your Club Stride Youth Certificate!</p>
+      
+      <!-- Requirements Section -->
+      <div class="requirements-section">
+        <h3>📋 What You Need to Submit</h3>
+        <div class="requirements-grid">
+          <div class="requirement-item">
+            <div class="req-icon">🎨</div>
+            <div class="req-content">
+              <h4>Canva Course Certificate</h4>
+              <p>Complete the Simplilearn Canva course and submit your completion certificate</p>
+            </div>
+          </div>
+          <div class="requirement-item">
+            <div class="req-icon">🧠</div>
+            <div class="req-content">
+              <h4>Motivational Interviewing Certificate</h4>
+              <p>Complete the Cardea Motivational Interviewing course and submit your certificate</p>
+            </div>
+          </div>
+          <div class="requirement-item">
+            <div class="req-icon">📝</div>
+            <div class="req-content">
+              <h4>Simple Training Reflection</h4>
+              <p>Write a brief reflection on your learning experience and how you'll apply these skills</p>
+            </div>
+          </div>
+        </div>
+        <div class="submission-info">
+          <p><strong>📧 Email all submissions to:</strong> <a href="mailto:javier@clubstride.org">javier@clubstride.org</a></p>
+          <p><strong>⏰ After verification:</strong> We'll send you your official Club Stride Youth Training Certificate</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Training Modules Container (initially hidden) -->
+    <div id="modulesContainer" style="display: none;">
+
+    <!-- Module 1: STI Prevention & Youth Awareness -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">1</span>STI Prevention &amp; Youth Awareness</h2>
+          <span class="duration">30 Minutes</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Master the art of healthy conversations about preventing sexually transmitted infections (STIs) and understand why youth are at higher risk. You'll learn evidence-based approaches to delivering honest, age-appropriate STI prevention messages that actually work.</p>
+        <div class="resource-section">
+          <div class="resource-title">Premium Resource</div>
+          <ul>
+            <li><a href="https://odphp.health.gov/myhealthfinder/health-conditions/hiv-and-other-stds/talk-your-teen-about-preventing-stis" target="_blank">MyHealthfinder — Talk with Your Teen About Preventing STIs →</a></li>
+          </ul>
+        </div>
+        <details>
+          <summary>Learning Activities &amp; Deliverables</summary>
+          <div class="content">
+            <ul>
+              <li>Study the comprehensive guide and extract key strategies for peer-to-peer STI prevention discussions</li>
+              <li>Create a compelling summary explaining why youth face higher STI risks and the critical importance of regular testing</li>
+              <li>Develop a powerful conversation script with key talking points for initiating STI prevention discussions</li>
+              <li>Submit your summary and conversation outline to demonstrate mastery of the content</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Module 2: Content Creation with Canva -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">2</span>Content Creation Mastery</h2>
+          <span class="duration">1 Hour</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Transform your creative vision into stunning visual content with professional-grade design skills. Master Canva's powerful tools through expert-led training and create compelling graphics that amplify your message and drive engagement.</p>
+        <div class="resource-section">
+          <div class="resource-title">Premium Resource</div>
+          <ul>
+            <li><a href="https://www.simplilearn.com/free-canva-course-skillup" target="_blank">Simplilearn — Professional Canva Mastery Course →</a></li>
+          </ul>
+        </div>
+        <div class="submission-required">
+          <div class="submission-header">📋 Certificate Submission Required</div>
+          <p><strong>Important:</strong> You must complete the full Simplilearn Canva course and submit your completion certificate to continue.</p>
+          <div class="submission-details">
+            <p>📧 <strong>Email your certificate to:</strong> <a href="mailto:javier@clubstride.org">javier@clubstride.org</a></p>
+            <p>📝 <strong>Subject line:</strong> "Canva Certificate - [Your Name]"</p>
+            <p>⏰ <strong>Processing:</strong> We'll verify your submission and follow up with your Club Stride training certificate</p>
+          </div>
+        </div>
+        <details>
+          <summary>Learning Activities &amp; Deliverables</summary>
+          <div class="content">
+            <ul>
+              <li>Enroll in the comprehensive Canva mastery course and complete all video modules</li>
+              <li>Pass the course quiz and download your completion certificate</li>
+              <li>Design a professional-quality Club Stride branded social media post or promotional poster</li>
+              <li>Email your certificate and design sample to javier@clubstride.org</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Cross-Integration Assignment 1 -->
+    <section class="module integration-module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">🔗</span>Integration Challenge: Visual Health Advocacy</h2>
+          <span class="duration">30 Minutes</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Quick integration challenge: Combine your STI prevention knowledge with your new design skills to create one compelling visual health message. This focused challenge tests your ability to translate health messaging into visual content.</p>
+        <div class="resource-section">
+          <div class="resource-title">🎯 Quick Integration Challenge</div>
+          <ul>
+            <li><strong>Primary Goal:</strong> Merge health advocacy expertise with visual storytelling</li>
+            <li><strong>Deliverable:</strong> One visual health message</li>
+            <li><strong>Skills Integration:</strong> STI Prevention + Content Creation</li>
+          </ul>
+        </div>
+        <details>
+          <summary>Simple Challenge Requirements</summary>
+          <div class="content">
+            <ul>
+              <li><strong>Choose One Key Message:</strong> Pick your most important STI prevention message from Module 1</li>
+              <li><strong>Create One Visual:</strong> Use Canva to design either an Instagram post OR a simple flyer with this message</li>
+              <li><strong>Quick Reflection:</strong> Write 2-3 sentences explaining why you chose this message and visual approach</li>
+              <li><strong>That's it!</strong> Submit your visual and brief reflection - keep it simple and focused</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Module 3: Event Planning -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">3</span>Strategic Event Planning</h2>
+          <span class="duration">1 Hour</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Learn to orchestrate high-impact events and workshops that create lasting change. Master the complete event planning process from concept to execution, including budgeting, logistics, partnerships, and team coordination.</p>
+        <div class="resource-section">
+          <div class="resource-title">Premium Resource</div>
+          <ul>
+            <li><a href="https://www.afterschoolalliance.org/loachecklist.cfm" target="_blank">Afterschool Alliance — Professional Event Planning Framework →</a></li>
+          </ul>
+        </div>
+        <details>
+          <summary>Learning Activities &amp; Deliverables</summary>
+          <div class="content">
+            <ul>
+              <li>Master the complete event planning checklist including budgeting, venue selection, permits, and partnerships</li>
+              <li>Create a comprehensive one-page event plan for a Club Stride campus or community activation</li>
+              <li>Design compelling promotional materials including flyers and social media content</li>
+              <li>Submit your complete event strategy and promotional materials as proof of expertise</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Module 4: Motivational Interviewing & Behavior Change -->
+    <section class="module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">4</span>Behavior Change Psychology</h2>
+          <span class="duration">1 Hour</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Unlock the psychology of sustainable behavior change through advanced motivational interviewing techniques. Learn to guide meaningful conversations that inspire authentic transformation and lasting positive habits.</p>
+        <div class="resource-section">
+          <div class="resource-title">Premium Resource</div>
+          <ul>
+            <li><a href="https://cardea.matrixlms.com/visitor_catalog_class/show/639189" target="_blank">Cardea — Advanced Motivational Interviewing Certification →</a></li>
+          </ul>
+        </div>
+        <div class="submission-required">
+          <div class="submission-header">📋 Certificate Submission Required</div>
+          <p><strong>Important:</strong> You must complete the full Cardea Motivational Interviewing course and submit your completion certificate to continue.</p>
+          <div class="submission-details">
+            <p>📧 <strong>Email your certificate to:</strong> <a href="mailto:javier@clubstride.org">javier@clubstride.org</a></p>
+            <p>📝 <strong>Subject line:</strong> "Motivational Interviewing Certificate - [Your Name]"</p>
+            <p>⏰ <strong>Processing:</strong> We'll verify your submission and follow up with your Club Stride training certificate</p>
+          </div>
+        </div>
+        <details>
+          <summary>Learning Activities &amp; Deliverables</summary>
+          <div class="content">
+            <ul>
+              <li>Complete the full motivational interviewing certification program with quiz and digital certificate</li>
+              <li>Master reflective listening techniques and behavior change psychology principles</li>
+              <li>Practice conversation skills through the course exercises</li>
+              <li>Email your completion certificate to javier@clubstride.org</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Cross-Integration Assignment 2 -->
+    <section class="module integration-module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">🔗</span>Integration Challenge: Behavior Change Event Design</h2>
+          <span class="duration">30 Minutes</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Combine your strategic event planning expertise with behavior change psychology to design a transformational community experience. This advanced integration challenge requires you to architect events that don't just inform, but actually motivate sustainable behavior change.</p>
+        <div class="resource-section">
+          <div class="resource-title">🎯 Integration Challenge</div>
+          <ul>
+            <li><strong>Primary Goal:</strong> Fuse event management skills with behavior change science</li>
+            <li><strong>Deliverable:</strong> Complete behavior change event blueprint</li>
+            <li><strong>Skills Integration:</strong> Event Planning + Motivational Interviewing + Behavior Psychology</li>
+          </ul>
+        </div>
+        <details>
+          <summary>Challenge Requirements &amp; Deliverables</summary>
+          <div class="content">
+            <ul>
+              <li><strong>Behavior Change Event Blueprint:</strong> Design a 2-hour Club Stride community workshop that uses motivational interviewing principles to guide participants through a specific health behavior change journey</li>
+              <li><strong>Psychological Flow Design:</strong> Create a detailed agenda showing how you'll use reflective listening, open-ended questions, and behavior change stages throughout the event timeline</li>
+              <li><strong>Interactive Activity Framework:</strong> Develop 3 specific activities that apply motivational interviewing techniques in group settings (role-play scenarios, reflection exercises, peer conversations)</li>
+              <li><strong>Resistance Strategy Plan:</strong> Anticipate and plan for common participant resistance or ambivalence, with specific motivational interviewing responses and techniques</li>
+              <li><strong>Follow-up Behavior Support System:</strong> Design a 30-day post-event engagement plan that continues to support behavior change using motivational interviewing principles</li>
+              <li><strong>Integration Reflection Essay:</strong> Write a 500-word analysis of how event planning logistics must be adapted when the goal shifts from information delivery to behavior transformation</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final Module -->
+    <section class="module final-module">
+      <div class="module-header">
+        <div class="module-title">
+          <h2><span class="module-number">5</span>Capstone Integration &amp; Portfolio</h2>
+          <span class="duration">1 Hour</span>
+        </div>
+      </div>
+      <div class="module-content">
+        <p>Complete your training journey with a simple reflection on your learning experience. Share your key insights and how you'll apply your new skills in real-world situations.</p>
+        <details>
+          <summary>Simple Reflection Tasks</summary>
+          <div class="content">
+            <ul>
+              <li><strong>Learning Summary:</strong> Write a brief paragraph about your biggest takeaway from each of the 4 main modules</li>
+              <li><strong>Application Ideas:</strong> List 3 ways you plan to use these skills in your community or personal projects</li>
+              <li><strong>Future Goals:</strong> Share one health advocacy goal you want to work toward using your new skills</li>
+              <li><strong>Submit via email:</strong> Send your simple reflection to javier@clubstride.org with subject "Training Reflection - [Your Name]"</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    </div> <!-- End modules container -->
+
+    <div class="completion-badge">
+      <h3>📧 Ready to Submit?</h3>
+      <p>Once you've completed all the modules and external courses, email your certificates and reflection to <strong>javier@clubstride.org</strong> to receive your official Club Stride Youth Training Certificate!</p>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+// Simple Training Interface Management
+let studentName = '';
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Load saved name if available
+  try {
+    const savedName = localStorage.getItem('clubStride_studentName');
+    if (savedName) {
+      studentName = savedName;
+      document.getElementById('studentName').value = savedName;
+      showTrainingInterface();
+    }
+  } catch (e) {
+    console.log('Local storage not available');
+  }
+});
+
+function startTraining() {
+  const nameInput = document.getElementById('studentName');
+  const name = nameInput.value.trim();
+  
+  if (name.length < 2) {
+    alert('Please enter your full name to begin training');
+    nameInput.focus();
+    return;
+  }
+  
+  studentName = name;
+  
+  // Save to localStorage
+  try {
+    localStorage.setItem('clubStride_studentName', studentName);
+  } catch (e) {
+    console.log('Cannot save to localStorage');
+  }
+  
+  showTrainingInterface();
+}
+
+function showTrainingInterface() {
+  document.getElementById('nameInputSection').style.display = 'none';
+  document.getElementById('progressSection').style.display = 'block';
+  document.getElementById('modulesContainer').style.display = 'block';
+  document.getElementById('welcomeName').textContent = studentName;
+}
+</script>
+</body>
+</html>
