@@ -189,7 +189,7 @@
     opacity: 0.7;
   }
   
-  #startBtn {
+  #startBtn, .action-btn {
     background: linear-gradient(135deg, var(--berkeley-blue) 0%, var(--light-blue) 100%);
     color: var(--white);
     border: none;
@@ -204,15 +204,147 @@
     box-shadow: 0 8px 25px rgba(0, 50, 98, 0.3);
   }
   
-  #startBtn:hover {
+  #startBtn:hover, .action-btn:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 12px 35px rgba(0, 50, 98, 0.4);
   }
   
-  #startBtn:disabled {
+  #startBtn:disabled, .action-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
     transform: none;
+  }
+  
+  /* Role Selection Styles */
+  .role-selection-section {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    display: none;
+  }
+  
+  .role-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    border: 2px solid var(--california-gold);
+  }
+  
+  .role-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .role-header h2 {
+    color: var(--berkeley-blue);
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .role-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .role-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .role-option {
+    background: var(--bg-light);
+    padding: 30px;
+    border-radius: 15px;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .role-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .role-option.selected {
+    border-color: var(--california-gold);
+    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+    transform: scale(1.02);
+  }
+  
+  .role-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .role-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .role-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--berkeley-blue);
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .role-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+  
+  .role-modules {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  .role-modules-title {
+    font-weight: 700;
+    color: var(--berkeley-blue);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+  
+  .role-modules ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .role-modules li {
+    color: var(--text-dark);
+    padding: 5px 0;
+    font-size: 0.9rem;
+    position: relative;
+    padding-left: 20px;
+  }
+  
+  .role-modules li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--california-gold);
+    font-weight: 700;
+  }
+  
+  .continue-btn-container {
+    text-align: center;
   }
   
   @keyframes pulse {
@@ -268,33 +400,16 @@
     line-height: 1.7;
   }
   
-  .progress-container {
-    margin: 30px 0;
-    text-align: center;
-  }
-  
-  .progress-label {
-    font-weight: 700;
+  .role-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
     color: var(--berkeley-blue);
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-  }
-  
-  .progress-bar {
-    background: #E2E8F0;
-    height: 12px;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .progress-fill {
-    background: linear-gradient(90deg, var(--california-gold), var(--gold-light));
-    height: 100%;
-    width: 0%;
-    border-radius: 6px;
-    transition: width 0.8s ease;
-    box-shadow: 0 2px 8px rgba(253, 181, 21, 0.4);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
   }
   
   .module {
@@ -574,101 +689,6 @@
     font-size: 0.9rem;
   }
   
-  .completed-badge {
-    background: linear-gradient(135deg, var(--california-gold), var(--gold-light));
-    color: var(--berkeley-blue);
-    padding: 6px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-left: 15px;
-    animation: bounceIn 0.5s ease-out;
-  }
-  
-  .module.completed {
-    border-color: var(--california-gold);
-    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-  }
-  
-  .module.completed:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(253, 181, 21, 0.2);
-  }
-  
-  @keyframes bounceIn {
-    0% {
-      opacity: 0;
-      transform: scale(0.3);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1.1);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .final-module {
-    border: 3px solid var(--california-gold);
-    background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-  }
-  
-  .final-module .module-header {
-    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
-    color: var(--berkeley-blue);
-  }
-  
-  .final-module .module-number {
-    background: var(--berkeley-blue);
-    color: var(--california-gold);
-  }
-  
-  .final-module .duration {
-    background: rgba(0, 50, 98, 0.1);
-    color: var(--berkeley-blue);
-    border-color: var(--berkeley-blue);
-  }
-  
-  .integration-module {
-    border: 3px solid var(--light-blue);
-    background: linear-gradient(135deg, #F0F9FF 0%, #E0F7FA 100%);
-    position: relative;
-  }
-  
-  .integration-module::before {
-    content: '⚡ INTEGRATION CHALLENGE';
-    position: absolute;
-    top: -15px;
-    left: 30px;
-    background: linear-gradient(135deg, var(--light-blue), #4FC3F7);
-    color: var(--white);
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-  }
-  
-  .integration-module .module-header {
-    background: linear-gradient(135deg, var(--light-blue) 0%, #42A5F5 100%);
-    color: var(--white);
-  }
-  
-  .integration-module .module-number {
-    background: linear-gradient(135deg, var(--california-gold), var(--gold-light));
-    color: var(--berkeley-blue);
-    font-size: 1.5rem;
-  }
-  
-  .integration-module .duration {
-    background: rgba(74, 144, 226, 0.2);
-    color: var(--light-blue);
-    border-color: var(--light-blue);
-  }
-  
   .completion-badge {
     text-align: center;
     margin-top: 40px;
@@ -692,157 +712,6 @@
     opacity: 0.9;
   }
   
-  .certificate-section {
-    margin-top: 50px;
-    text-align: center;
-  }
-  
-  .certificate-card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-    border: 3px solid var(--california-gold);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .certificate-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(253, 181, 21, 0.08) 0%, transparent 70%);
-    animation: certificateGlow 4s ease-in-out infinite;
-  }
-  
-  .certificate-header {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 30px;
-  }
-  
-  .certificate-header h2 {
-    color: var(--berkeley-blue);
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-  
-  .certificate-header p {
-    color: var(--text-light);
-    font-size: 1.2rem;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .certificate-preview {
-    position: relative;
-    z-index: 1;
-    margin-top: 30px;
-  }
-  
-  #certificateCanvas {
-    border: 3px solid var(--berkeley-blue);
-    border-radius: 15px;
-    max-width: 100%;
-    height: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    margin-bottom: 25px;
-  }
-  
-  .submission-reminder {
-    background: linear-gradient(135deg, #FEF3C7 0%, #FBBF24 100%);
-    border: 2px solid var(--california-gold);
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px 0;
-    text-align: left;
-  }
-  
-  .submission-reminder p {
-    color: var(--berkeley-blue);
-    font-weight: 600;
-    margin: 10px 0;
-  }
-  
-  .submission-reminder ul {
-    color: var(--text-dark);
-    margin: 10px 0 10px 20px;
-  }
-  
-  .submission-reminder li {
-    margin: 8px 0;
-    font-weight: 500;
-  }
-  
-  .submission-reminder a {
-    color: var(--berkeley-blue);
-    font-weight: 700;
-    text-decoration: none;
-    border-bottom: 2px solid var(--california-gold);
-    padding: 2px 4px;
-  }
-  
-  .submission-reminder a:hover {
-    background: var(--california-gold);
-    color: var(--white);
-    border-radius: 4px;
-  }
-  
-  .certificate-download-section {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .cert-download-btn {
-    background: linear-gradient(135deg, var(--california-gold) 0%, var(--gold-light) 100%);
-    color: var(--berkeley-blue);
-    border: none;
-    padding: 15px 35px;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 8px 25px rgba(253, 181, 21, 0.3);
-  }
-  
-  .cert-download-btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 12px 35px rgba(253, 181, 21, 0.4);
-  }
-  
-  .success-message {
-    display: none;
-    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-    color: #155724;
-    padding: 15px 25px;
-    border-radius: 15px;
-    margin-top: 20px;
-    font-weight: 600;
-    border: 2px solid #b8dacc;
-  }
-  
-  .success-message.show {
-    display: block;
-    animation: slideDown 0.5s ease-out;
-  }
-  
-  @keyframes certificateGlow {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: scale(1.05) rotate(180deg); opacity: 0.8; }
-  }
-  
   @media (max-width: 768px) {
     header {
       padding: 40px 20px;
@@ -863,6 +732,10 @@
     
     .module-content {
       padding: 30px 25px;
+    }
+    
+    .role-options {
+      grid-template-columns: 1fr;
     }
   }
   
@@ -897,19 +770,60 @@
       <div class="name-card">
         <div class="name-header">
           <h2>🎯 Start Your Training Journey</h2>
-          <p>Enter your name to begin! Simply explore each module and your progress will be tracked automatically. No complicated tasks - just learn and earn your certificate!</p>
+          <p>Enter your name to begin! Your training will be customized based on your role.</p>
         </div>
         <div class="name-form">
           <input type="text" id="studentName" placeholder="Enter your full name" maxlength="50">
-          <button onclick="startTraining()" id="startBtn">Begin Training →</button>
+          <button onclick="proceedToRoleSelection()" id="startBtn">Continue →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Role Selection Section -->
+    <section class="role-selection-section" id="roleSelectionSection">
+      <div class="role-card">
+        <div class="role-header">
+          <h2>Select Your Role</h2>
+          <p>Choose your internship position to see your customized training modules</p>
+        </div>
+        <div class="role-options">
+          <label class="role-option" for="lead-intern">
+            <input type="radio" id="lead-intern" name="role" value="lead">
+            <div class="role-icon">👑</div>
+            <div class="role-title">Lead Intern</div>
+            <div class="role-description">College student leading teams and coordinating campaigns</div>
+            <div class="role-modules">
+              <div class="role-modules-title">Your Training Includes:</div>
+              <ul>
+                <li>STI Prevention & Youth Awareness</li>
+                <li>Content Creation with Canva</li>
+              </ul>
+            </div>
+          </label>
+          
+          <label class="role-option" for="core-intern">
+            <input type="radio" id="core-intern" name="role" value="core">
+            <div class="role-icon">⭐</div>
+            <div class="role-title">Core Intern</div>
+            <div class="role-description">High school student creating content and engaging peers</div>
+            <div class="role-modules">
+              <div class="role-modules-title">Your Training Includes:</div>
+              <ul>
+                <li>Content Creation with Canva</li>
+              </ul>
+            </div>
+          </label>
+        </div>
+        <div class="continue-btn-container">
+          <button onclick="startTraining()" class="action-btn" id="roleStartBtn" disabled>Begin Training →</button>
         </div>
       </div>
     </section>
 
     <!-- Progress Section (initially hidden) -->
     <section class="intro-section" id="progressSection" style="display: none;">
-      <h2>Welcome to Your Journey, <span id="welcomeName"></span>! 🚀</h2>
-      <p>Complete the training modules below and submit the required certificates to earn your Club Stride Youth Certificate!</p>
+      <h2>Welcome to Your Journey, <span id="welcomeName"></span>! <span class="role-badge" id="roleBadge"></span></h2>
+      <p id="roleDescription"></p>
       
       <!-- Requirements Section -->
       <div class="requirements-section">
@@ -922,10 +836,10 @@
               <p>Complete the Simplilearn Canva course and submit your completion certificate</p>
             </div>
           </div>
-          <div class="requirement-item">
+          <div class="requirement-item" id="reflectionRequirement">
             <div class="req-icon">📝</div>
             <div class="req-content">
-              <h4>Simple Training Reflection</h4>
+              <h4>Training Reflection</h4>
               <p>Write a brief reflection on your learning experience and how you'll apply these skills</p>
             </div>
           </div>
@@ -940,8 +854,8 @@
     <!-- Training Modules Container (initially hidden) -->
     <div id="modulesContainer" style="display: none;">
 
-    <!-- Module 1: STI Prevention & Youth Awareness -->
-    <section class="module">
+    <!-- Module 1: STI Prevention & Youth Awareness (Lead Interns Only) -->
+    <section class="module" id="stiModule" style="display: none;">
       <div class="module-header">
         <div class="module-title">
           <h2><span class="module-number">1</span>STI Prevention &amp; Youth Awareness</h2>
@@ -970,11 +884,11 @@
       </div>
     </section>
 
-    <!-- Module 2: Content Creation with Canva -->
-    <section class="module">
+    <!-- Module 2: Content Creation with Canva (All Interns) -->
+    <section class="module" id="canvaModule">
       <div class="module-header">
         <div class="module-title">
-          <h2><span class="module-number">2</span>Content Creation Mastery</h2>
+          <h2><span class="module-number" id="canvaModuleNumber">1</span>Content Creation Mastery</h2>
           <span class="duration">1 Hour</span>
         </div>
       </div>
@@ -1011,60 +925,94 @@
 
     </div> <!-- End modules container -->
 
-    <div class="completion-badge">
+    <div class="completion-badge" id="completionBadge" style="display: none;">
       <h3>📧 Ready to Submit?</h3>
-      <p>Once you've completed both modules and the Canva course, email your certificate and reflection to <strong>javier@clubstride.org</strong> to receive your official Club Stride Youth Training Certificate!</p>
+      <p id="completionText">Once you've completed your required modules, email your certificate and reflection to <strong>javier@clubstride.org</strong> to receive your official Club Stride Youth Training Certificate!</p>
     </div>
   </main>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-// Simple Training Interface Management
+// Training Interface Management
 let studentName = '';
+let selectedRole = '';
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-  // Load saved name if available
-  try {
-    const savedName = localStorage.getItem('clubStride_studentName');
-    if (savedName) {
-      studentName = savedName;
-      document.getElementById('studentName').value = savedName;
-      showTrainingInterface();
-    }
-  } catch (e) {
-    console.log('Local storage not available');
-  }
+  // Add event listeners for role selection
+  const roleOptions = document.querySelectorAll('input[name="role"]');
+  roleOptions.forEach(option => {
+    option.addEventListener('change', handleRoleSelection);
+  });
 });
 
-function startTraining() {
+function proceedToRoleSelection() {
   const nameInput = document.getElementById('studentName');
   const name = nameInput.value.trim();
   
   if (name.length < 2) {
-    alert('Please enter your full name to begin training');
+    alert('Please enter your full name to continue');
     nameInput.focus();
     return;
   }
   
   studentName = name;
   
-  // Save to localStorage
-  try {
-    localStorage.setItem('clubStride_studentName', studentName);
-  } catch (e) {
-    console.log('Cannot save to localStorage');
-  }
-  
-  showTrainingInterface();
+  // Hide name input and show role selection
+  document.getElementById('nameInputSection').style.display = 'none';
+  document.getElementById('roleSelectionSection').style.display = 'block';
 }
 
-function showTrainingInterface() {
-  document.getElementById('nameInputSection').style.display = 'none';
+function handleRoleSelection(e) {
+  selectedRole = e.target.value;
+  
+  // Update visual selection
+  document.querySelectorAll('.role-option').forEach(option => {
+    option.classList.remove('selected');
+  });
+  e.target.closest('.role-option').classList.add('selected');
+  
+  // Enable start button
+  document.getElementById('roleStartBtn').disabled = false;
+}
+
+function startTraining() {
+  if (!selectedRole) {
+    alert('Please select your role to continue');
+    return;
+  }
+  
+  // Hide role selection
+  document.getElementById('roleSelectionSection').style.display = 'none';
+  
+  // Show progress section and modules
   document.getElementById('progressSection').style.display = 'block';
   document.getElementById('modulesContainer').style.display = 'block';
+  document.getElementById('completionBadge').style.display = 'block';
+  
+  // Update welcome message
   document.getElementById('welcomeName').textContent = studentName;
+  
+  // Customize based on role
+  if (selectedRole === 'lead') {
+    // Lead Intern setup
+    document.getElementById('roleBadge').textContent = 'Lead Intern';
+    document.getElementById('roleDescription').textContent = 'Complete both training modules below to master STI prevention strategies and content creation skills!';
+    document.getElementById('stiModule').style.display = 'block';
+    document.getElementById('canvaModuleNumber').textContent = '2';
+    document.getElementById('completionText').textContent = 'Once you\'ve completed both modules and the Canva course, email your certificate and reflection to javier@clubstride.org to receive your official Club Stride Youth Training Certificate!';
+    document.getElementById('reflectionRequirement').style.display = 'block';
+  } else {
+    // Core Intern setup
+    document.getElementById('roleBadge').textContent = 'Core Intern';
+    document.getElementById('roleDescription').textContent = 'Complete the Canva training module below to master content creation skills!';
+    document.getElementById('stiModule').style.display = 'none';
+    document.getElementById('canvaModuleNumber').textContent = '1';
+    document.getElementById('completionText').textContent = 'Once you\'ve completed the Canva course, email your certificate to javier@clubstride.org to receive your official Club Stride Youth Training Certificate!';
+    
+    // Hide reflection requirement for Core Interns (optional)
+    document.getElementById('reflectionRequirement').style.display = 'block';
+  }
 }
 </script>
 </body>
